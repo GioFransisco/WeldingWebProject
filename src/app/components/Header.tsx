@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,6 +55,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
+            {/* <button><Link to='/' className="text-slate-700 hover:text-orange-500 transition-colors">Home</Link></button> */}
             <button onClick={() => scrollToSection('home')} className="text-slate-700 hover:text-orange-500 transition-colors">Home</button>
             <button onClick={() => scrollToSection('about')} className="text-slate-700 hover:text-orange-500 transition-colors">About</button>
             <button onClick={() => scrollToSection('services')} className="text-slate-700 hover:text-orange-500 transition-colors">Services</button>

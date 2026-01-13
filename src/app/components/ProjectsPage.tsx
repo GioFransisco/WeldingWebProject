@@ -3,6 +3,7 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import { ChevronLeft } from 'lucide-react';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { useNavigate } from 'react-router-dom';
 
 interface Project {
   title: string;
@@ -151,7 +152,9 @@ const projects: Project[] = [
   }
 ];
 
-export function ProjectsPage({ onBack }: { onBack: () => void }) {
+// export function ProjectsPage({ onBack }: { onBack: () => void })
+export function ProjectsPage() {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = ['all', 'Commercial', 'Industrial', 'Residential', 'Infrastructure'];
@@ -165,7 +168,7 @@ export function ProjectsPage({ onBack }: { onBack: () => void }) {
       <div className="container mx-auto px-4">
         {/* Back Button */}
         <Button 
-          onClick={onBack}
+          onClick={() => navigate('/')}
           variant="outline"
           className="mb-8"
         >
@@ -234,14 +237,13 @@ export function ProjectsPage({ onBack }: { onBack: () => void }) {
         </div>
 
         {/* Call to Action */}
-        {/* <div className="mt-16 bg-slate-900 text-white rounded-lg p-12 text-center">
+        <div className="mt-16 bg-slate-900 text-white rounded-lg p-12 text-center">
           <h2 className="text-3xl mb-4">Ready to Start Your Project?</h2>
           <p className="text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
             Contact us today for a free consultation and discover how our expertise can bring your vision to life
           </p>
           <Button 
             onClick={() => {
-              onBack();
               setTimeout(() => {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }, 100);
@@ -251,7 +253,7 @@ export function ProjectsPage({ onBack }: { onBack: () => void }) {
           >
             Get a Free Quote
           </Button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
